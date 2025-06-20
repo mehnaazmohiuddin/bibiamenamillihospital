@@ -8,10 +8,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+
+
 // Sticky header
 window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
-    header.classList.toggle('sticky', window.scrollY > 0);
+    if (window.scrollY > 10) {
+        header.classList.add('shrink');
+
+    } else {
+        header.classList.remove('shrink');
+    }
 });
 
 // Form submission handling

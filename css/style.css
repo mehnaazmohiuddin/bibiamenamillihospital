@@ -28,20 +28,33 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
+    transition: all 0.3s ease;
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
+    padding: 0.5rem 2%;
     max-width: 1400px;
     margin: 0 auto;
+}
+.shrink {
+    padding: 0.3rem 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.shrink .logo h1 {
+    font-size: 1.1rem;
+    transition: font-size 0.3s;
 }
 
 .logo h1 {
     color: var(--primary-color);
     font-size: 1.5rem;
+}
+.shrink .navbar {
+    padding: 0.2rem 2%;
+    transition: padding 0.3s;
 }
 
 .nav-links {
@@ -88,6 +101,23 @@ header {
 .btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+@media (max-width: 768px) {
+    header {
+        padding: 0;
+    }
+    .navbar {
+        padding: 0.3rem 2%;
+    }
+    .logo h1 {
+        font-size: 1rem;
+    }
+    header.shrink .navbar {
+        padding: 0.1rem 2%;
+    }
+    header.shrink .logo h1 {
+        font-size: 0.9rem;
+    }
 }
 
 /* Hero Section */
@@ -186,8 +216,20 @@ header {
     color: var(--secondary-color);
     margin-bottom: 0.5rem;
 }
-
-/* Contact Section */
+.contact {
+    padding: 5rem 1rem;
+    background-color: var(--light-bg);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+/* 
+/* Contact Section 
 .contact {
     padding: 5rem 1rem;
     background-color: var(--light-bg);
@@ -203,10 +245,19 @@ header {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
+    grid-template-columns: 50% 50%;
+    gap: 1.5rem;
+    align-items: start;
 }
-
+@media (max-width: 100%) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .responsive-iframe-container {
+        min-height: 300px;
+    }
+}
 .contact-info {
     display: flex;
     flex-direction: column;
@@ -241,7 +292,7 @@ header {
 .contact-form textarea {
     height: 150px;
     resize: vertical;
-}
+} */
 
 /* Footer */
 footer {
@@ -296,6 +347,25 @@ footer {
     border-top: 1px solid rgba(255,255,255,0.1);
 }
 
+
+
+.responsive-iframe-container {
+    position: relative;
+    width: 50%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio, change as needed */
+    height: 0;
+    overflow: hidden;
+}
+
+.responsive-iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    border: 0;
+} 
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
@@ -317,4 +387,4 @@ footer {
     .hero-content h1 {
         font-size: 2rem;
     }
-} 
+}
