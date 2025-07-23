@@ -6,29 +6,55 @@
 }
 
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #3498db;
-    --accent-color: #e74c3c;
-    --text-color: #333;
-    --light-bg: #f5f6fa;
+    --primary-color: rgb(137, 138, 196);      /* Deepest purple for header/footer */
+    --secondary-color: rgb(162, 170, 219);    /* Medium purple for highlights/buttons */
+    --accent-color: rgb(192, 201, 238);       /* Light purple for accents */
+    --text-color: rgb(137, 138, 196);         /* Use deepest purple for main text */
+    --light-bg: rgb(255, 242, 224);           /* Soft cream for backgrounds */
     --white: #ffffff;
+    --header-height: 70px;
 }
 
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
+    background: var(--light-bg);
 }
 
 /* Header and Navigation */
 header {
-    background-color: var(--white);
+    background-color: var(--primary-color);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     transition: all 0.3s ease;
+    height: var(--header-height);
+}
+
+header.shrink {
+    height: 48px;
+}
+
+header.shrink .navbar {
+    padding: 0.3rem 3%;
+    transition: padding 0.3s;
+}
+
+header.shrink .logo h1 {
+    font-size: 1.1rem;
+}
+
+header.shrink .nav-links a {
+    font-size: 0.95rem;
+    padding: 0.3em 0.7em;
+}
+
+header.shrink .cta-buttons .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
 }
 
 .navbar {
@@ -49,7 +75,7 @@ header {
 }
 
 .logo h1 {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     font-size: 1.5rem;
 }
 .shrink .navbar {
@@ -65,13 +91,13 @@ header {
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--white);
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: var(--secondary-color);
+    color: var(--accent-color);
 }
 
 .cta-buttons {
@@ -94,13 +120,15 @@ header {
 }
 
 .btn-emergency {
-    background-color: var(--accent-color);
+    background-color: var(--primary-color);
     color: var(--white);
 }
 
 .btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: var(--accent-color);
+    color: var(--primary-color);
 }
 @media (max-width: 768px) {
     header {
@@ -131,7 +159,13 @@ header {
     justify-content: center;
     text-align: center;
     color: var(--white);
-    padding: 0 1rem;
+    padding: 1 1rem;
+    padding-top: calc(var(--header-height) + 2rem);
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-content h1 {
@@ -171,6 +205,7 @@ header {
     text-align: center;
     transition: transform 0.3s ease;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border: 1px solid var(--secondary-color);
 }
 
 .service-card:hover {
@@ -179,7 +214,7 @@ header {
 
 .service-card i {
     font-size: 2.5rem;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     margin-bottom: 1rem;
 }
 
@@ -323,7 +358,7 @@ footer {
 }
 
 .footer-section a {
-    color: var(--white);
+    color: var(--secondary-color);
     text-decoration: none;
 }
 
@@ -338,7 +373,7 @@ footer {
 }
 
 .social-links a:hover {
-    color: var(--secondary-color);
+    color: var(--accent-color);
 }
 
 .footer-bottom {
@@ -387,4 +422,294 @@ footer {
     .hero-content h1 {
         font-size: 2rem;
     }
+}
+
+/* Dropdown Menu Styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--white);
+    min-width: 200px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 6px;
+    z-index: 1001;
+    padding: 0.5em 0;
+    list-style: none;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 0.7em 1.2em;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1em;
+    transition: background 0.2s;
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li a:focus {
+    background: var(--light-bg);
+    color: var(--secondary-color);
+}
+
+.dropdown.open .dropdown-menu {
+    display: block;
+}
+
+/* Mobile: make dropdown full width and static */
+@media (max-width: 900px) {
+    .dropdown-menu {
+        position: static;
+        min-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        background: var(--white);
+    }
+    .dropdown-menu li a {
+        padding: 1em 2em;
+        font-size: 1em;
+    }
+}
+
+/* Doctors Section Styles */
+.doctors {
+    padding: 4rem 1rem;
+    background: var(--light-bg);
+}
+.doctors h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+.doctors-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.doctor-card {
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    padding: 2rem 1rem;
+    text-align: center;
+    border: 1px solid var(--secondary-color);
+}
+.doctor-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+.doctor-card p {
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+/* Swiper Container Specific Styles */
+.slider-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto 40px auto;
+    height: 85vh;
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--header-height);
+}
+
+.mySwiper {
+    width: 100%;
+    height: 100%;
+    max-width: 100vw;
+    border: none;
+}
+
+/* Style for images inside the slider slides */
+.swiper-slide img {
+    width: 100%; /* Image fills the width of its slide */
+    height: 100%; /* Image fills the height of its slide */
+    object-fit: cover; /* Ensures image covers the area without distortion, cropping if necessary */
+    object-position: top;
+    display: block; /* Removes extra space below image if it's inline */
+}
+
+/* Optional: Style for Swiper navigation buttons */
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--primary-color); /* White arrows */
+    background-color: var(--accent-color); /* Semi-transparent black background */
+    border-radius: 50%; /* Make them round */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* You might need to adjust their position relative to the container */
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Darker on hover */
+}
+
+/* Optional: Style for Swiper pagination dots */
+.swiper-pagination-bullet {
+    background-color: var(--secondary-color); /* White dots */
+    opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: var(--primary-color); /* Active dot color (Swiper's default blue) */
+    opacity: 1;
+}
+
+/* Responsive adjustments (optional) */
+@media (max-width: 768px) {
+    .mySwiper {
+        height: 300px; /* Shorter slider on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .mySwiper {
+        height: 200px; /* Even shorter on mobile */
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Swiper Slide as Card */
+.swiper-slide {
+    min-height: unset;
+    max-height: unset;
+    height: 100%;
+    padding: 0;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(137, 138, 196, 0.10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    transition: box-shadow 0.2s;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    max-height: 85vh;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(137, 138, 196, 0.08);
+    background: var(--light-bg);
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .slider-container {
+        height: 50vw;
+        min-height: 220px;
+    }
+    .mySwiper {
+        height: 100%;
+    }
+    .swiper-slide img {
+        max-height: 50vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .slider-container {
+        height: 280px;
+        min-height: 160px;
+    }
+    .mySwiper {
+        width: 100vw;
+        height: 100%;
+    }
+    .swiper-wrapper {
+        flex-wrap: nowrap;
+    }
+    .swiper-slide {
+        min-width: 80vw;
+        height: 180px;
+        padding: 0;
+    }
+    .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        max-height: 180px;
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --header-height: 56px;
+    }
+    .hero {
+        padding-top: calc(var(--header-height) + 1rem);
+    }
+}
+
+.nav-links li,
+.dropdown {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.dropdown-toggle {
+    padding: 0;
+    margin: 0;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/* Remove default vertical alignment issues for dropdown */
+.dropdown {
+    margin: 0;
+    padding: 0;
+}
+
+.hero {
+    min-height: 85vh;
+}
+
+.slider-container {
+    height: 75vh;
+    min-height: 400px;
+}
+
+.mySwiper {
+    height: 100%;
+}
+
+.swiper-slide {
+    height: 100%;
+}
+
+.swiper-slide img {
+    max-height: 75vh;
+    height: 100%;
 }
