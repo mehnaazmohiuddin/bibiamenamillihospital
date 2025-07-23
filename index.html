@@ -6,6 +6,9 @@
     <title>Bibi Amena Milli Hospital</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
 </head>
 <body>
     <!-- Header Section -->
@@ -18,7 +21,17 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#doctors">Our Doctors</a></li>
+                <li class="dropdown">
+                    <a href="#doctors" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Our Doctors</a>
+                    <ul class="dropdown-menu" aria-label="submenu">
+                        <li><a href="#doctor1">Dr. Maqdoom Mohiuddin, Diabetologist, Director </a></li>
+                        <li><a href="#doctor2">Dr. Sukumar MS, Orthopaedic surgeon</a></li>
+                        <li><a href="#doctor3">Dr Salam Khan. MD, Pediatrician </a></li>
+                        <li><a href="#doctor4">Dr. Anitha Rani MBBS, DGO/a></li>
+                        <li><a href="#doctor5">Dr Shoaib MD, DM consultant Cardiologist</a></li>
+                        <li><a href="#doctor5">Dr Syeda Shaista Hussaini,MD, DNB consultant Nephrologist</a></li>
+                    </ul>
+                </li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="cta-buttons">
@@ -31,8 +44,20 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Welcome to Bibia Menami Milli Hospital</h1>
-            <p>Providing Quality Healthcare Services</p>
+            <section class="slider-container">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="images/dr_maqdoom_stairs.jpeg" alt="Hospital Pic1 "></div>
+                        <div class="swiper-slide"><img src="images/hospital_pic.jpeg" alt="Building picture showing hospital"></div>
+                        <div class="swiper-slide"><img src="images/operation_theator.jpeg" alt="Operation Theater picture"></div>
+                        </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </section>
+           
+            <h2>Providing Quality Healthcare Services at Affordable Prices</h2>
             <a href="#appointment" class="btn btn-primary">Book an Appointment</a>
         </div>
     </section>
@@ -69,11 +94,17 @@
         <h2>About Us</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Bibia Menami Milli Hospital is committed to providing exceptional healthcare services to our community. With state-of-the-art facilities and experienced medical professionals, we ensure the highest standards of patient care.</p>
+                <p>Bibia Menami Milli Hospital is committed to providing exceptional healthcare services to our community. With state-of-the-art facilities and experienced medical professionals, we ensure the highest standards of patient care.
+                    Established 25 years ago by our esteemed late Chairman Janab Moinuddin Ghori, our hospital embodies a vision to provide affordable healthcare in the Chandrayan Gotta area, catering to the diverse needs of the Old City population across various specialties. Rooted in core values of Excellence, Affordability, and a Humane touch, we extend our services to over 60 families free of cost, particularly those under the poverty line dealing with Diabetes and Hypertension. Monthly check-ups and a month's supply of free medicines are provided with the support of FAIZ-E-AAM TRUST Hyderabad.
+
+                    Mr. Iftekhar Husain, the secretary of Faiz e Aam, personally contributes nearly Rs. 50,000 monthly to run our Academy of Nursing and Para-Medical Sciences. Not only are the educational services provided free of cost, but scholarships are also granted to every student. To date, we have educated more than 3500 students in various evidence-based nursing and paramedical courses.
+
+
+                </p>
             </div>
             <div class="stats">
                 <div class="stat-item">
-                    <h3>50+</h3>
+                    <h3>10+</h3>
                     <p>Expert Doctors</p>
                 </div>
                 <div class="stat-item">
@@ -81,9 +112,32 @@
                     <p>Emergency Care</p>
                 </div>
                 <div class="stat-item">
-                    <h3>1000+</h3>
+                    <h3>50000+</h3>
                     <p>Happy Patients</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add doctor sections for anchor links -->
+    <section id="doctors" class="doctors">
+        <h2>Our Doctors</h2>
+        <div class="doctors-list">
+            <div id="doctor1" class="doctor-card">
+                <h3>Dr. Anitha Rani</h3>
+                <p>Gynecology</p>
+            </div>
+            <div id="doctor2" class="doctor-card">
+                <h3>Dr Salam Khan</h3>
+                <p>Pediatrics</p>
+            </div>
+            <div id="doctor3" class="doctor-card">
+                <h3>Dr. Sukumar MS</h3>
+                <p>Orthopaedics</p>
+            </div>
+            <div id="doctor4" class="doctor-card">
+                <h3>Dr. Shoaib</h3>
+                <p>Cardiology</p>
             </div>
         </div>
     </section>
@@ -178,8 +232,8 @@
         <div class="footer-bottom">
             <p>&copy; 2025 Bibi Amena Milli Hospital. All rights reserved.</p>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="js/main.js"></script>
     </footer>
-
-    <script src="js/main.js"></script>
 </body>
 </html> 
